@@ -11,7 +11,7 @@ import { SITE } from "@/config";
 export const SOCIALS = [
   {
     name: "Github",
-    href: "https://github.com/satnaing/astro-paper",
+    href: "https://github.com/njuvtk/astro-paper-njuv",
     linkTitle: ` ${SITE.title} on Github`,
     icon: IconGitHub,
   },
@@ -29,7 +29,7 @@ export const SOCIALS = [
   },
   {
     name: "Mail",
-    href: "mailto:yourmail@gmail.com",
+    href: "mailto:njuvtk@outlook.com",
     linkTitle: `Send an email to ${SITE.title}`,
     icon: IconMail,
   },
