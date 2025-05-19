@@ -3,7 +3,7 @@ export const SITE = {
   author: "Nan Shui",
   profile: "",
   desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
-  title: "NjUvTk",
+  title: "南水亭",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerIndex: 4,
@@ -17,6 +17,6 @@ export const SITE = {
     url: "https://github.com/satnaing/astro-paper/edit/main/",
   },
   dynamicOgImage: false,
-  lang: "zh_CN", // html lang code. Set this empty and default will be "en"
+  lang: "zh-cn", // html lang code. Set this empty and default will be "en"
   timezone: "Asia/Shanghai", // Default global timezone (IANA format) https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 } as const;
