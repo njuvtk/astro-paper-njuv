@@ -13,7 +13,7 @@ import {
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
-  base: '/astro-paper-njuv/',
+  base: '/',
   integrations: [
     sitemap({
       filter: page => SITE.showArchives || !page.endsWith("/archives"),
