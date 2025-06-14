@@ -9,6 +9,7 @@ import { SITE } from "@/config";
 const backUrl = SITE.showBackButton ? `${Astro.url.pathname}` : "/";
 const base = import.meta.env.BASE_URL || "";
 const pagefindJs = `${base}pagefind/pagefind.js`;
+const isDev = import.meta.env.DEV;
 ---
 
 <Layout title={`Search | ${SITE.title}`}>
@@ -20,8 +21,8 @@ const pagefindJs = `${base}pagefind/pagefind.js`;
 </Layout>
 
 <script is:inline>
-  // 通过 Astro 模板插值传递 pagefindJs 路径
   const pagefindJs = "{pagefindJs}";
+  const isDev = {isDev};
   const script = document.createElement('script');
   script.src = pagefindJs;
   script.type = 'text/javascript';
@@ -36,7 +37,7 @@ const pagefindJs = `${base}pagefind/pagefind.js`;
     onIdle(async () => {
       // @ts-expect-error — Missing types for @pagefind/default-ui package.
       const { PagefindUI } = await import("@pagefind/default-ui");
-      if (import.meta.env.DEV) {
+      if (isDev) {
         pageFindSearch.innerHTML = `
             <div class=\"bg-muted/75 rounded p-4 space-y-4 mb-4\">
               <p><strong>DEV mode Warning! </strong>You need to build the project at least once to see the search results during development.</p>
