@@ -20,9 +20,10 @@ const pagefindJs = `${base}pagefind/pagefind.js`;
 </Layout>
 
 <script is:inline>
-  // 动态插入 pagefind.js，确保 base 路径正确
+  // 通过 Astro 模板插值传递 pagefindJs 路径
+  const pagefindJs = "{pagefindJs}";
   const script = document.createElement('script');
-  script.src = "{pagefindJs}";
+  script.src = pagefindJs;
   script.type = 'text/javascript';
   script.onload = () => initSearch();
   document.head.appendChild(script);
@@ -37,9 +38,9 @@ const pagefindJs = `${base}pagefind/pagefind.js`;
       const { PagefindUI } = await import("@pagefind/default-ui");
       if (import.meta.env.DEV) {
         pageFindSearch.innerHTML = `
-            <div class="bg-muted/75 rounded p-4 space-y-4 mb-4">
+            <div class=\"bg-muted/75 rounded p-4 space-y-4 mb-4\">
               <p><strong>DEV mode Warning! </strong>You need to build the project at least once to see the search results during development.</p>
-              <code class="block bg-black text-white px-2 py-1 rounded">pnpm run build</code>
+              <code class=\"block bg-black text-white px-2 py-1 rounded\">pnpm run build</code>
             </div>
           `;
       }
