@@ -115,8 +115,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
   document.addEventListener("astro:page-load", () => {
     const indexLayout = document.querySelector("#main-content");
     if (indexLayout?.dataset?.layout) {
-      // 处理 base 为 / 或 /xxx
-      sessionStorage.setItem("backUrl", base === "/" ? "/" : base.replace(/\/$/, "") + "/");
+      sessionStorage.setItem("backUrl", base);
     }
   });
 </script>
