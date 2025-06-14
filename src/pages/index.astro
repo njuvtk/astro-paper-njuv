@@ -110,12 +110,13 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
   <Footer />
 </Layout>
 
-<script>
+<script is:inline>
+  const base = "{SITE.base}";
   document.addEventListener("astro:page-load", () => {
-    const indexLayout = (document.querySelector("#main-content") as HTMLElement)
-      ?.dataset?.layout;
-    if (indexLayout) {
-      sessionStorage.setItem("backUrl", "/");
+    const indexLayout = document.querySelector("#main-content");
+    if (indexLayout?.dataset?.layout) {
+      // 处理 base 为 / 或 /xxx
+      sessionStorage.setItem("backUrl", base === "/" ? "/" : base.replace(/\/$/, "") + "/");
     }
   });
 </script>
