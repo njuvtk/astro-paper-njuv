@@ -7,6 +7,7 @@ import Footer from "@/components/Footer.astro";
 import { SITE } from "@/config";
 
 const backUrl = SITE.showBackButton ? `${SITE.base}${Astro.url.pathname}` : SITE.base;
+const isDev = import.meta.env.DEV;
 ---
 
 <Layout title={`Search | ${SITE.title}`}>
@@ -19,6 +20,7 @@ const backUrl = SITE.showBackButton ? `${SITE.base}${Astro.url.pathname}` : SITE
 
 <script is:inline>
   const PAGEFIND_BASE = "${SITE.base}";
+  const IS_DEV = `${JSON.stringify(isDev)}`;
 
   function initSearch() {
     const pageFindSearch = document.querySelector("#pagefind-search");
@@ -33,8 +35,8 @@ const backUrl = SITE.showBackButton ? `${SITE.base}${Astro.url.pathname}` : SITE
       // @ts-expect-error — Missing types for @pagefind/default-ui package.
       const { PagefindUI } = await import("@pagefind/default-ui");
 
-      // Display warning inn dev mode
-      if (import.meta.env.DEV) {
+      // Display warning in dev mode
+      if (IS_DEV) {
         pageFindSearch.innerHTML = `
             <div class="bg-muted/75 rounded p-4 space-y-4 mb-4">
               <p><strong>DEV mode Warning! </strong>You need to build the project at least once to see the search results during development.</p>
