@@ -20,7 +20,7 @@ const isDev = import.meta.env.DEV;
 
 <script is:inline>
   const PAGEFIND_BASE = "${SITE.base}";
-  const IS_DEV = `${JSON.stringify(isDev)}`;
+  const IS_DEV = {isDev};
 
   function initSearch() {
     const pageFindSearch = document.querySelector("#pagefind-search");
